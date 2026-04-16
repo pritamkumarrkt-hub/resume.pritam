@@ -1,321 +1,105 @@
-/* Core Setup & Base Font */
-
+/* --- Global Reset & Base Styles --- */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
-html {
-    scroll-behavior: smooth;
-}
-
-
-/* Deep Dark Professional Theme */
 
 body {
-    background-color: #0a0a0a;
-    color: #d1d5db;
-    line-height: 1.7;
-    overflow-x: hidden;
-    font-family: 'Inter', sans-serif;
-    /* Base text font */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f7f6;
+    color: #333;
+    /* Adds padding around the edges on mobile so text doesn't touch the screen sides */
+    padding: 20px; 
 }
 
-
-/* Headings Font Override */
-
-h1,
-h2,
-h3,
-h4,
-.logo {
-    font-family: 'Montserrat', sans-serif;
+/* --- The Main Resume Box --- */
+.resume-container {
+    max-width: 800px; /* Limits width on big screens */
+    margin: 0 auto; /* Centers the box */
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Navigation */
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 25px 40px;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(10px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #1f2937;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: 1px;
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin: 0 20px;
-}
-
-nav ul li a {
-    color: #9ca3af;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: #60a5fa;
-}
-
-
-/* Hero Section */
-
-.hero {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/* --- Typography & Headers --- */
+header {
     text-align: center;
-    padding: 0 20px;
+    border-bottom: 2px solid #eaeaea;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 h1 {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.gradient-text {
-    background: linear-gradient(90deg, #60a5fa, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    color: #9ca3af;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
-
-.summary {
-    max-width: 600px;
-    color: #6b7280;
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-}
-
-
-/* Buttons */
-
-.btn {
-    padding: 14px 35px;
-    background: linear-gradient(90deg, #3b82f6, #6366f1);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: transform 0.3s, box-shadow 0.3s;
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-}
-
-
-/* Layout & Sections */
-
-section {
-    padding: 120px 20px 60px;
-    max-width: 900px;
-    margin: auto;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #fff;
-    margin-bottom: 40px;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 60px;
-    height: 3px;
-    background: #60a5fa;
-    border-radius: 2px;
-}
-
-
-/* Skills Grid */
-
-.skills-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-@media (max-width: 768px) {
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-.skill-card {
-    background: #111827;
-    padding: 30px;
-    border-radius: 12px;
-    border: 1px solid #1f2937;
-}
-
-.skill-card h3 {
-    color: #fff;
-    margin-bottom: 15px;
-    font-size: 1.2rem;
-}
-
-
-/* Tech Tags (Code Font) */
-
-.tech-tags {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.tech-tag {
-    background: #1f2937;
-    color: #60a5fa;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-family: 'Fira Code', monospace;
-    /* Monospace font for skills */
-    border: 1px solid #374151;
-}
-
-
-/* Experience & Projects List */
-
-.experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.exp-item {
-    background: #111827;
-    padding: 30px;
-    border-radius: 12px;
-    border-left: 4px solid #60a5fa;
-}
-
-.exp-item h4 {
-    color: #fff;
-    font-size: 1.2rem;
+    font-size: 2.5rem;
+    color: #2c3e50;
     margin-bottom: 5px;
 }
 
-.exp-item p {
-    color: #9ca3af;
+h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
     margin-bottom: 15px;
-    font-size: 0.95rem;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
 }
 
-.exp-item ul {
-    list-style-position: inside;
-    color: #d1d5db;
+.tagline {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: bold;
 }
 
-.exp-item ul li {
-    margin-bottom: 8px;
-}
-
-
-/* Footer */
-
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    color: #4b5563;
+.contact-info {
     font-size: 0.9rem;
-    margin-top: 50px;
-    border-top: 1px solid #1f2937;
+    color: #95a5a6;
+    margin-top: 10px;
 }
 
+/* --- Sections & Layout --- */
+.resume-section {
+    margin-bottom: 30px;
+}
 
-/* =========================================
-   ANIMATIONS 
-   ========================================= */
+.project {
+    margin-bottom: 15px;
+}
 
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+.project h3 {
+    font-size: 1.1rem;
+    color: #34495e;
+}
+
+/* --- Responsive Skills Grid --- */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap; /* This is the magic! It forces items to wrap to the next line on small screens */
+    gap: 10px;
+}
+
+.skill-badge {
+    background-color: #3498db;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* --- Mobile Adjustments (Media Query) --- */
+@media (max-width: 600px) {
+    /* When the screen is smaller than 600px, shrink the padding to save space */
+    body {
+        padding: 10px;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    
+    .resume-container {
+        padding: 20px;
     }
-}
 
-.fade-in-down {
-    animation: fadeInDown 0.8s ease-out forwards;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(40px);
+    h1 {
+        font-size: 2rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.slide-up {
-    animation: slideUp 1s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.stagger-up {
-    animation: fadeIn 1.5s ease-in forwards;
-}
-
-.hover-lift {
-    transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.hover-lift:hover {
-    transform: translateY(-8px);
-    border-color: #60a5fa;
 }
