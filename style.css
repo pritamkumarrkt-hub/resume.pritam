@@ -1,105 +1,347 @@
-/* --- Global Reset & Base Styles --- */
+/* ==========================================================================
+   CSS Variables for Theming and Consistency
+   ========================================================================== */
+:root {
+    --bg-main: #0f172a;          /* Deep Slate Background */
+    --bg-card: #1e293b;          /* Lighter Slate for Cards */
+    --text-main: #f8fafc;        /* White/Gray for primary text */
+    --text-muted: #94a3b8;       /* Muted text for descriptions */
+    --accent-color: #3b82f6;     /* Bright Blue */
+    --accent-hover: #2563eb;     /* Darker Blue for hover states */
+    --gradient-primary: linear-gradient(135deg, #3b82f6, #8b5cf6); /* Blue to Purple */
+    
+    --font-sans: 'Inter', sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    
+    --transition: all 0.3s ease-in-out;
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Enables smooth scrolling when clicking nav links */
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-sans);
     line-height: 1.6;
-    background-color: #f4f7f6;
-    color: #333;
-    /* Adds padding around the edges on mobile so text doesn't touch the screen sides */
-    padding: 20px; 
+    padding: 0 20px;
+    overflow-x: hidden;
 }
 
-/* --- The Main Resume Box --- */
-.resume-container {
-    max-width: 800px; /* Limits width on big screens */
-    margin: 0 auto; /* Centers the box */
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
 }
 
-/* --- Typography & Headers --- */
-header {
-    text-align: center;
-    border-bottom: 2px solid #eaeaea;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
+ul {
+    list-style: none;
 }
 
-h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 5px;
+a {
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   Typography & Utilities
+   ========================================================================== */
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 h2 {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    border-left: 4px solid #3498db;
-    padding-left: 10px;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
-.tagline {
-    font-size: 1.2rem;
-    color: #7f8c8d;
-    font-weight: bold;
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--gradient-primary);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+    border: 2px solid transparent;
 }
 
-.contact-info {
-    font-size: 0.9rem;
-    color: #95a5a6;
-    margin-top: 10px;
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
 }
 
-/* --- Sections & Layout --- */
-.resume-section {
-    margin-bottom: 30px;
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
 }
 
-.project {
-    margin-bottom: 15px;
+.btn-outline:hover {
+    background: var(--accent-color);
+    color: #fff;
 }
 
-.project h3 {
-    font-size: 1.1rem;
-    color: #34495e;
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(15, 23, 42, 0.85); /* Semi-transparent for blur effect */
+    backdrop-filter: blur(10px);
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* --- Responsive Skills Grid --- */
-.skills-grid {
+nav {
     display: flex;
-    flex-wrap: wrap; /* This is the magic! It forces items to wrap to the next line on small screens */
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* ==========================================================================
+   Layout & Sections
+   ========================================================================== */
+section {
+    max-width: 1000px;
+    margin: 100px auto;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-family: var(--font-mono);
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.summary {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto 35px auto;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Skills Section (CSS Grid for scaling) */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Automatically adapts to screen width */
+    gap: 25px;
+}
+
+.skill-card {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.skill-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.skill-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
-.skill-badge {
-    background-color: #3498db;
-    color: white;
-    padding: 8px 15px;
+.tech-tag {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-color);
+    padding: 6px 12px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
 }
 
-/* --- Mobile Adjustments (Media Query) --- */
-@media (max-width: 600px) {
-    /* When the screen is smaller than 600px, shrink the padding to save space */
-    body {
-        padding: 10px;
+/* Experience / Projects Section */
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.exp-item {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.exp-item h4 {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.exp-item p {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+.exp-item ul {
+    color: var(--text-muted);
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.exp-item li {
+    margin-bottom: 8px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-muted);
+    margin-top: 100px;
+}
+
+/* ==========================================================================
+   Animations
+   ========================================================================== */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-down {
+    animation: fadeInDown 1s ease forwards;
+}
+
+.slide-up {
+    animation: slideUp 1s ease forwards;
+}
+
+/* ==========================================================================
+   Responsive Media Queries (Mobile & Tablet Adaptation)
+   ========================================================================== */
+
+/* Tablet & Smaller Laptops */
+@media screen and (max-width: 992px) {
+    .hero h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.2rem; }
+    section { margin: 80px auto; }
+}
+
+/* Mobile Devices */
+@media screen and (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 10px 0;
     }
     
-    .resume-container {
-        padding: 20px;
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .hero {
+        min-height: 60vh;
+        margin-top: 20px;
     }
 
-    h1 {
-        font-size: 2rem;
+    .hero h1 { font-size: 2.5rem; }
+    .subtitle { font-size: 1rem; }
+    .summary { font-size: 1rem; padding: 0 10px; }
+    
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    h2 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+    
+    .exp-item { padding: 20px; }
+    
+    /* Ensure the contact grid stacks nicely on mobile */
+    .skills-container {
+        grid-template-columns: 1fr;
     }
 }
