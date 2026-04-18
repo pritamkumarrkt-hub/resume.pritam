@@ -49,3 +49,21 @@ const scrollObserver = new IntersectionObserver((entries) => {
 // Grab all elements we want to animate and observe them
 const animatedElements = document.querySelectorAll('.slide-up, .stagger-up');
 animatedElements.forEach((el) => scrollObserver.observe(el));
+// 3. Mobile Hamburger Menu Logic
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('#nav-menu li a');
+
+// Open/Close menu when clicking the hamburger
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
+
+// Close menu automatically when a link is clicked
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
